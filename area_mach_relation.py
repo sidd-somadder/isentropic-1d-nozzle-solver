@@ -1,5 +1,3 @@
-import numpy as np
-
 def area_mach_relation(M, gamma=1.4):
     '''
     Returns the square of the area ratio for a 1D isentropic nozzle using input mach number M
