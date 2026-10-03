@@ -4,6 +4,11 @@ from newton_raphson import newton_raphson_solver as nrs
 from area_mach_relation import area_mach_relation as amr
 
 def plot_area_mach_regime(area_ratio, subsonic, supersonic, area_result, mach_sweep):
+    '''
+    Plots forward calculated values of area ratio from Mach number sweep.
+    Plots Newton-Raphson solved Mach numbers from area ratio sweep on top.
+    Plot used as leading image of readme.md 
+    '''
     fig, ax = plt.subplots()
     ax.plot(area_result, mach_sweep, color='black', lw=1.5, label="Exact Relation")
     ax.plot(area_ratio, subsonic, "o", color='steelblue', markersize=5, label="Newton-Raphson (Subsonic)")
@@ -19,6 +24,9 @@ def plot_area_mach_regime(area_ratio, subsonic, supersonic, area_result, mach_sw
     plt.show()
 
 def plot_residual_roots(mach, f, area_target, gamma=1.4):
+    '''
+    Plots the residual function f_A as discussed in technical report to demonstrate that there are 4 solutions
+    '''
     res = nrs(area_ratio_target=area_target, gamma=gamma)
     roots = [-res["supersonic_mach"], -res["subsonic_mach"],
              res["subsonic_mach"], res["supersonic_mach"]]
@@ -36,11 +44,12 @@ def plot_residual_roots(mach, f, area_target, gamma=1.4):
     ax.grid(True, alpha=0.4)
     plt.show()
 
+# 
 N = 41
 M = 501
 K = 200
 
-mach_theoretical = np.union1d(np.linspace(-3,0, K, endpoint=False),np.linspace(0.01,3,K))
+mach_theoretical = np.union1d(np.linspace(-3,0, K, endpoint=False),np.linspace(0.015,3,K))
 area_sweep = np.union1d(np.linspace(1,10,N, endpoint=True), np.array([1.02, 1.08]))
 mach_sweep = np.linspace(0.01,4,M, endpoint=True)
 
