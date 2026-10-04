@@ -36,4 +36,4 @@ def get_stag_properties(mach, gamma=1.4):
     rho_stag = T_stag**(1/(gamma-1))
     a_stag = T_stag**(0.5)
 
-    return {"stag_temp_ratio": T_stag, "stag_density_ratio": p_stag, "stag_pressure_ratio": rho_stag, "stag_acoustic_ratio": a_stag}
+    return {"stag_temp_ratio": T_stag, "stag_density_ratio": rho_stag, "stag_pressure_ratio": p_stag, "stag_acoustic_ratio": a_stag}

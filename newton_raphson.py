@@ -10,7 +10,7 @@ def newton_raphson_solver(area_ratio_target, max_steps=100, gamma=1.4, tolerance
     # Handle sonic flow and no solution cases separately where numerical approximation not applicable
     if area_ratio_target == 1:
         return {"subsonic_mach": 1.0, "supersonic_mach": 1.0,
-                "NR_steps_sub": np.array([1.0]), "NR_steps_super": np.array([1.0])}
+                "subsonic_log": np.array([1.0]), "supersonic_log": np.array([1.0])}
     if area_ratio_target < 1:
         raise ValueError("A/A* < 1 has no solution.")
 
