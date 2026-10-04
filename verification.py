@@ -24,6 +24,32 @@ def forward_check(tolerance=5e-5):
     print(f"Tabulated A/A*: {table_area_ratio}")
     print(f"Errors: {abs_error}")
 
+def finite_difference_test(M_max=5, M_min=0.01, dM=1e-6, gamma=1.4, tolerance=1e-6):
+    print(f"Finite difference test: all inputs nonzero; tolerance = {tolerance}")
+    step_count = round((M_max-M_min)/dM) +1
+    M_sweep = np.linspace(M_min,M_max,step_count, endpoint=True)
+    area_results = area_mach_relation(M_sweep, gamma)
+    deriv_results = area_mach_df(M_sweep, gamma)
 
+    # Max relative error in max norm used since bad behaviour as M -> 0
+    deriv_numerical = np.gradient(area_results,M_sweep, edge_order=2)
+    deriv_error = np.abs(deriv_numerical-deriv_results)
+    max_deriv =np.max(np.abs(deriv_results))
+    max_rel_error = np.max(deriv_error / max_deriv)
+
+    if max_rel_error <= tolerance:
+        print(f"PASS; max relative error = {max_rel_error:.4e}")
+    else: 
+        print(f"FAIL; max relative error = {max_rel_error:.4e}")
+    print(f"Mach sweep: {M_min} to {M_max}, {step_count} points (dM = {dM:.0e})")
+    print(f"Specific Heat Ratio (gamma): {gamma}")
+
+def inverse_check():
+    print()
+    
+print(40*"~")
 forward_check()
-print(20*"~")
+print(40*"~")
+print(40*"~")
+finite_difference_test()
+print(40*"~")
