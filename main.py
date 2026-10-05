@@ -22,11 +22,13 @@ def print_results(A, gamma):
 
 if __name__ == "__main__":
     while True:
-        area_ratio = float(input("Please input your desired nozzle area ratio (A/A* >= 1): "))
-        gamma = float(input("Please input your fluid specific heat ratio (> 1; calorically perfect air: gamma = 1.4): "))
+        try:
+            area_ratio = float(input("Please input your desired nozzle area ratio (A/A*): "))
+            gamma = float(input("Please input your fluid specific heat ratio (air: gamma = 1.4): "))
+        except ValueError:
+            print("Inputs must be numbers. Please try again.")
+            continue
         if area_ratio >= 1 and gamma > 1:
             print_results(A=area_ratio, gamma=gamma)
-            break;
-        else:
-            print("One or more of inputs are invalid. A/A* must be greater than or equal to 1; gamma must be greater than 1. Please try again.")
-
+            break
+        print("Invalid input: A/A* must be at least 1, and gamma must be greater than 1. Please try again.")
