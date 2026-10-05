@@ -4,7 +4,7 @@ Python tool that solves the quasi-1D isentropic area–Mach relation for both su
 
 ![area_mach_plot](figures/area_mach_plot.png)
 
-*Newton–Raphson solutions (markers) on the exact area–Mach relation (line) for $\gamma$ = 1.4. Every area ratio above 1 has a subsonic and a supersonic solution.*
+*Newton–Raphson solutions (markers) on the exact area–Mach relation (line) for specific heat ratio = 1.4. Every area ratio above 1 has a subsonic and a supersonic solution.*
 
 ---
 
