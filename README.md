@@ -158,10 +158,12 @@ isentropic-nozzle-solver/
 ├── requirements.txt
 ├── LICENSE
 ├── docs/
-│   └── technical_report.pdf   [derivation, method, and verification]
+│   └── 1D_Isentropic_Nozzle_Solver_Technical_Report.pdf   [derivation, method, and verification]
 └── figures/
+    ├── area_mach_relation.pdf
     ├── area_mach_relation.png
-    └── residual_roots.png
+    ├── area_mach_residual.pdf    
+    └── area_mach_residual.png
 ```
 
 ---
