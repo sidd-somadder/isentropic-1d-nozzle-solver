@@ -21,7 +21,7 @@ Full derivation, method, and verification: [Technical report (PDF)](docs/1D_Isen
 ## Features
 
 - Solves for both Mach numbers (subsonic and supersonic) from an area ratio
-- Computes stagnation ratios T0/T, p0/p, rho0/rho, and a0/a at each solution
+- Computes stagnation-to-static ratios $\frac{T_0}{T}$ (temperature), $\frac{p_0}{p}$ (pressure), $\frac{\rho_0}{\rho}$ (density), and $\frac{a_0}{a}$ (acoustic speed) at each solution
 - Physically derived initial guesses, guaranteed to start on the correct branch
 - Supports general specific heat ratio $\gamma > 1$
 - Verification script comparing against published isentropic tables from Table B.1 of John and Keith, *Gas Dynamics*
