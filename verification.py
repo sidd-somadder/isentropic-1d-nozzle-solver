@@ -95,9 +95,10 @@ def inverse_check(table_rounding=5e-5, gamma=1.4):
     print(f"Expected errors:        {expected_error}")
     print(f"Iterations:             {iterations}")
     
-print(40*"~")
-forward_check()
-print(40*"~")
-finite_difference_test()
-print(40*"~")
-inverse_check()
+if __name__ == "__main__":
+    print(40*"~")
+    forward_check()
+    print(40*"~")
+    finite_difference_test()
+    print(40*"~")
+    inverse_check()

@@ -44,31 +44,31 @@ def plot_residual_roots(mach, f, area_target, gamma=1.4):
     ax.grid(True, alpha=0.4)
     plt.show()
 
-# 
-N = 41
-M = 501
-K = 200
+if __name__ == "__main__":
+    N = 41
+    M = 501
+    K = 200
 
-mach_theoretical = np.union1d(np.linspace(-3,0, K, endpoint=False),np.linspace(0.015,3,K))
-area_sweep = np.union1d(np.linspace(1,10,N, endpoint=True), np.array([1.02, 1.08]))
-mach_sweep = np.linspace(0.01,4,M, endpoint=True)
+    mach_theoretical = np.union1d(np.linspace(-3,0, K, endpoint=False),np.linspace(0.015,3,K))
+    area_sweep = np.union1d(np.linspace(1,10,N, endpoint=True), np.array([1.02, 1.08]))
+    mach_sweep = np.linspace(0.01,4,M, endpoint=True)
 
-area_result = np.zeros(M)
-supersonic_result = np.zeros(N+2)
-subsonic_result = np.zeros(N+2)
-f = np.zeros(2*K)
+    area_result = np.zeros(M)
+    supersonic_result = np.zeros(N+2)
+    subsonic_result = np.zeros(N+2)
+    f = np.zeros(2*K)
 
-for j in range(2*K):
-    f[j] = amr(mach_theoretical[j], 1.4) - 2**2
+    for j in range(2*K):
+        f[j] = amr(mach_theoretical[j], 1.4) - 2**2
 
-for i in range(N+2):
-    result = nrs(area_ratio_target=area_sweep[i])
-    subsonic_result[i] = result["subsonic_mach"]
-    supersonic_result[i] = result["supersonic_mach"]
+    for i in range(N+2):
+        result = nrs(area_ratio_target=area_sweep[i])
+        subsonic_result[i] = result["subsonic_mach"]
+        supersonic_result[i] = result["supersonic_mach"]
 
-for k in range(M):
-    area_result[k] =  np.sqrt(amr(mach_sweep[k]))
+    for k in range(M):
+        area_result[k] =  np.sqrt(amr(mach_sweep[k]))
 
-plot_area_mach_regime(area_sweep, subsonic_result, supersonic_result, area_result, mach_sweep)
-plot_residual_roots(mach_theoretical,f,2)
+    plot_area_mach_regime(area_sweep, subsonic_result, supersonic_result, area_result, mach_sweep)
+    plot_residual_roots(mach_theoretical,f,2)
 
